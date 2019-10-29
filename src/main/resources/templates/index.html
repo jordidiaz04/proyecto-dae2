@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/icons.css">
+    <link rel="stylesheet" href="/assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="/assets/css/app-style.css">
+    <title>Productos</title>
 </head>
 <body>
-
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Proyecto Aplicaciones Empresariales 2</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <a th:href="@{/usuario}" class="btn btn-primary">Mantenimiento de usuarios</a>
+                    <a th:href="@{/cliente}" class="btn btn-primary">Mantenimiento de clientes</a>
+                    <a th:href="@{/producto}" class="btn btn-primary">Mantenimiento de producto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/sidebar-menu.js"></script>
+<script src="/assets/js/app-script.js"></script>
 </body>
 </html>
