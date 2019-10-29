@@ -1,7 +1,5 @@
 package pe.isil.proyectodae2.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
