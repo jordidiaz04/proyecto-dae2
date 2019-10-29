@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/icons.css">
+    <link rel="stylesheet" href="/assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="/assets/css/app-style.css">
+    <title>Clientes</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Agregar Cliente</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="#" method="post" th:object="${cliente}" th:action="@{/save-cliente}">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="txtDni">Dni</label>
+                                    <input type="text" class="form-control form-control-rounded" id="txtDni" placeholder="Ingrese su dni" maxlength="8" th:field="*{dni}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="txtPassword">Contraseña</label>
+                                    <input type="password" class="form-control form-control-rounded" id="txtPassword" placeholder="Ingrese una contraseña" maxlength="10" th:field="*{password}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="txtNombres">Nombres</label>
+                                    <input type="text" class="form-control form-control-rounded" id="txtNombres" placeholder="Ingrese su nombre" maxlength="60" th:field="*{nombres}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="txtApellidos">Apellidos</label>
+                                    <input type="text" class="form-control form-control-rounded" id="txtApellidos" placeholder="Ingrese sus apellidos" maxlength="60" th:field="*{apellidos}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="txtEmail">Email</label>
+                                    <input type="text" class="form-control form-control-rounded" id="txtEmail" placeholder="Ingrese su email" maxlength="100" th:field="*{email}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="txtTelefono">Telefono</label>
+                                    <input type="text" class="form-control form-control-rounded" id="txtTelefono" placeholder="Ingrese su telefono" maxlength="9" th:field="*{telefono}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="txtEmail">Estado</label>
+                                    <input type="text" class="form-control form-control-rounded" id="txtEstado" placeholder="Ingrese su Estado" maxlength="100" th:field="*{email}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="txtTelefono">Cuenta</label>
+                                    <input type="text" class="form-control form-control-rounded" id="txtCuenta" placeholder="Ingrese su Cuenta" maxlength="9" th:field="*{telefono}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="txtEmail">Carrito</label>
+                                    <input type="text" class="form-control form-control-rounded" id="txtCarrito" placeholder="Ingrese su Carrito" maxlength="100" th:field="*{email}">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary shadow-primary btn-round px-5"><i class="fa fa-save"></i> Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/sidebar-menu.js"></script>
+<script src="/assets/js/app-script.js"></script>
+</body>
+</html>
