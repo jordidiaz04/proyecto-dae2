@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/icons.css">
+    <link rel="stylesheet" href="/assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="/assets/css/app-style.css">
+    <title>Usuarios</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Listado de Usuarios</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <a th:href="@{/add-usuario}" class="btn btn-primary">Agregar usuario</a>
+                </div>
+                <div class="card-body" th:switch="usuarios">
+                    <div class="table-responsive" th:case="*">
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead class="thead-primary">
+                            <tr>
+                                <th scope="col">dni</th>
+                                <th scope="col">nombres</th>
+                                <th scope="col">apellidos</th>
+                                <th scope="col">email</th>
+                                <th scope="col">telefono</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="usuario : ${usuarios}">
+                                <td th:text="${usuario.dni}"></td>
+                                <td th:text="${usuario.nombres}"></td>
+                                <td th:text="${usuario.apellidos}"></td>
+                                <td th:text="${usuario.email}"></td>
+                                <td th:text="${usuario.telefono}"></td>
+                                <td class="text-right">
+                                    <a th:href="@{/usuario/{id}(id=${usuario.id})}" class="btn btn-icon btn-primary waves-effect waves-light m-1"> <i class="fa fa-pencil"></i> </a>
+                                    <a th:href="@{/delete-usuario/{id}(id=${usuario.id})}" class="btn btn-icon btn-danger waves-effect waves-light m-1"> <i class="fa fa-trash"></i> </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/sidebar-menu.js"></script>
+<script src="/assets/js/app-script.js"></script>
+</body>
+</html>
