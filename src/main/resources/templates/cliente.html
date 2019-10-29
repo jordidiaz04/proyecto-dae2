@@ -32,9 +32,6 @@
                                 <th scope="col">apellidos</th>
                                 <th scope="col">email</th>
                                 <th scope="col">telefono</th>
-                                <th scope="col">estado</th>
-                                <th scope="col">cuenta</th>
-                                <th scope="col">carrito</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -45,9 +42,6 @@
                                 <td th:text="${cliente.apellidos}"></td>
                                 <td th:text="${cliente.email}"></td>
                                 <td th:text="${cliente.telefono}"></td>
-                                <td th:text="${cliente.estado}"></td>
-                                <td th:text="${cliente.cuenta}"></td>
-                                <td th:text="${cliente.carrito}"></td>
                                 <td class="text-right">
                                     <a th:href="@{/cliente/{id}(id=${cliente.id})}" class="btn btn-icon btn-primary waves-effect waves-light m-1"> <i class="fa fa-pencil"></i> </a>
                                     <a th:href="@{/delete-cliente/{id}(id=${cliente.id})}" class="btn btn-icon btn-danger waves-effect waves-light m-1"> <i class="fa fa-trash"></i> </a>

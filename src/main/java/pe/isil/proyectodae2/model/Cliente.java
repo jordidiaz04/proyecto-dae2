@@ -41,10 +41,10 @@ public class Cliente {
     @Column(name = "direccion", nullable = false)
     public String direccion;
 
-    @Column(name = "cuenta", nullable = false)
-    public Boolean cuenta;
+    @Column(name = "cuenta", nullable = true)
+    public Boolean cuenta = true;
 
-    @Column(name = "carrito", nullable = false)
-    public Boolean carrito;
+    @Column(name = "carrito", nullable = true)
+    public Boolean carrito = true;
 
 }

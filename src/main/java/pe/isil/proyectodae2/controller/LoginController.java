@@ -25,6 +25,6 @@ public class LoginController {
     public String loginUsuario(Usuario usuario){
         Usuario obj = usuarioJdbc.login(usuario);
         if(obj != null) return "index";
-        else return "login";
+        else return "login?error=true";
     }
 }
