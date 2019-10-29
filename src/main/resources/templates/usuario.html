@@ -1,64 +1,118 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/icons.css">
-    <link rel="stylesheet" href="/assets/css/sidebar-menu.css">
-    <link rel="stylesheet" href="/assets/css/app-style.css">
-    <title>Usuarios</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Proyecto Aplicaciones Empresariales 2</title>
+    <link href="/assets/css/simplebar.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/sidebar-menu.css" rel="stylesheet">
+    <link href="/assets/css/app-style.css" rel="stylesheet">
+    <style type="text/css">
+        @-webkit-keyframes chartjs-render-animation{
+            from{opacity:0.99}
+            to{opacity:1}
+        }
+        @keyframes chartjs-render-animation{
+            from{opacity:0.99}
+            to{opacity:1}
+        }
+        .chartjs-render-monitor{
+            -webkit-animation:chartjs-render-animation 0.001s;
+            animation:chartjs-render-animation 0.001s;
+        }
+    </style>
 </head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h3>Listado de Usuarios</h3>
+<body class="active">
+<div id="wrapper" class="in">
+    <div id="sidebar-wrapper" data-simplebar="init" data-simplebar-auto-hide="true" class="active"><div class="simplebar-track vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="visibility: visible; top: 0px; height: 247px;"></div></div><div class="simplebar-track horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar"></div></div><div class="simplebar-scroll-content" style="padding-right: 17px; margin-bottom: -34px;"><div class="simplebar-content" style="padding-bottom: 17px; margin-right: -17px;">
+        <div class="brand-logo">
+            <a href="#">
+                <img src="/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                <h5 class="logo-text">PROYECTO-DAE2</h5>
+            </a>
         </div>
+        <ul class="sidebar-menu do-nicescrol in">
+            <li class="sidebar-header">MAIN NAVIGATION</li>
+            <li><a th:href="@{/usuario}"><i class="fa fa-circle-o"></i> Usuario</a></li>
+            <li><a th:href="@{/cliente}"><i class="fa fa-circle-o"></i> Cliente</a></li>
+            <li><a th:href="@{/producto}"><i class="fa fa-circle-o"></i> Producto</a></li>
+        </ul>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <a th:href="@{/add-usuario}" class="btn btn-primary">Agregar usuario</a>
+    </div></div>
+    <header class="topbar-nav">
+        <nav class="navbar navbar-expand fixed-top gradient-scooter">
+        </nav>
+    </header>
+
+    <div class="clearfix"></div>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="row pt-2 pb-2">
+                <div class="col-sm-9">
+                    <h4 class="page-title">Mantenimiento de Usuarios</h4>
                 </div>
-                <div class="card-body" th:switch="usuarios">
-                    <div class="table-responsive" th:case="*">
-                        <table class="table table-bordered table-hover table-sm">
-                            <thead class="thead-primary">
-                            <tr>
-                                <th scope="col">dni</th>
-                                <th scope="col">nombres</th>
-                                <th scope="col">apellidos</th>
-                                <th scope="col">email</th>
-                                <th scope="col">telefono</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="usuario : ${usuarios}">
-                                <td th:text="${usuario.dni}"></td>
-                                <td th:text="${usuario.nombres}"></td>
-                                <td th:text="${usuario.apellidos}"></td>
-                                <td th:text="${usuario.email}"></td>
-                                <td th:text="${usuario.telefono}"></td>
-                                <td class="text-right">
-                                    <a th:href="@{/usuario/{id}(id=${usuario.id})}" class="btn btn-icon btn-primary waves-effect waves-light m-1"> <i class="fa fa-pencil"></i> </a>
-                                    <a th:href="@{/delete-usuario/{id}(id=${usuario.id})}" class="btn btn-icon btn-danger waves-effect waves-light m-1"> <i class="fa fa-trash"></i> </a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                <div class="col-sm-3">
+                    <div class="btn-group float-sm-right">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header text-uppercase">
+                            <a th:href="@{/add-usuario}" class="btn btn-primary">Agregar usuario</a>
+                        </div>
+                        <div class="card-body" th:switch="usuarios">
+                            <div class="table-responsive" th:case="*">
+                                <table class="table table-bordered table-hover table-sm">
+                                    <thead class="thead-primary">
+                                    <tr>
+                                        <th scope="col">dni</th>
+                                        <th scope="col">nombres</th>
+                                        <th scope="col">apellidos</th>
+                                        <th scope="col">email</th>
+                                        <th scope="col">telefono</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="usuario : ${usuarios}">
+                                        <td th:text="${usuario.dni}"></td>
+                                        <td th:text="${usuario.nombres}"></td>
+                                        <td th:text="${usuario.apellidos}"></td>
+                                        <td th:text="${usuario.email}"></td>
+                                        <td th:text="${usuario.telefono}"></td>
+                                        <td class="text-right">
+                                            <a th:href="@{/usuario/{id}(id=${usuario.id})}" class="btn btn-icon btn-primary waves-effect waves-light m-1"> <i class="fa fa-pencil"></i> </a>
+                                            <a th:href="@{/delete-usuario/{id}(id=${usuario.id})}" class="btn btn-icon btn-danger waves-effect waves-light m-1"> <i class="fa fa-trash"></i> </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <a href="javaScript:void(0);" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
 </div>
+
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/popper.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
+<script src="assets/js/simplebar.js"></script>
+<script src="/assets/js/waves.js"></script>
 <script src="/assets/js/sidebar-menu.js"></script>
 <script src="/assets/js/app-script.js"></script>
+<script src="assets/js/Chart.min.js"></script>
+<script src="/assets/js/index.js"></script>
 </body>
 </html>
