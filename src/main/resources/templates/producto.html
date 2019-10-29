@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/icons.css">
+    <link rel="stylesheet" href="/assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="/assets/css/app-style.css">
+    <title>Productos</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Listado de Productos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <a th:href="@{/add-producto}" class="btn btn-primary">Agregar producto</a>
+                </div>
+                <div class="card-body" th:switch="productos">
+                    <div class="table-responsive" th:case="*">
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead class="thead-primary">
+                            <tr>
+                                <th scope="col">codigo</th>
+                                <th scope="col">nombre</th>
+                                <th scope="col">categoria</th>
+                                <th scope="col">precio</th>
+                                <th scope="col">stock</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="producto : ${productos}">
+                                <td th:text="${producto.codigo}"></td>
+                                <td th:text="${producto.nombre}"></td>
+                                <td th:text="${producto.categoria}"></td>
+                                <td th:text="${producto.precio}"></td>
+                                <td th:text="${producto.stock}"></td>
+                                <td class="text-right">
+                                    <a th:href="@{/producto/{id}(id=${producto.id})}" class="btn btn-icon btn-primary waves-effect waves-light m-1"> <i class="fa fa-pencil"></i> </a>
+                                    <a th:href="@{/delete-producto/{id}(id=${producto.id})}" class="btn btn-icon btn-danger waves-effect waves-light m-1"> <i class="fa fa-trash"></i> </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/sidebar-menu.js"></script>
+<script src="/assets/js/app-script.js"></script>
+</body>
+</html>
