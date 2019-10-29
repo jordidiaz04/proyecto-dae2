@@ -50,8 +50,10 @@ public class ClienteController {
         return getAllClientes(model);
     }
 
-    @PostMapping("/update-cliente")
-    public String updateCliente(@Valid @RequestBody Cliente cliente, Model model){
+    @PostMapping("/update-cliente/{id}")
+    public String updateCliente(@PathVariable(value = "id") Long id, Cliente cliente, Model model){
+        cliente.id = id;
+        cliente.estado = true;
         clienteRepository.save(cliente);
         return getAllClientes(model);
     }
