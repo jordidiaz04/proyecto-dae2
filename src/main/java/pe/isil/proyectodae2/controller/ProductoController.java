@@ -34,7 +34,7 @@ public class ProductoController {
 
     @GetMapping("/producto/{id}")
     public String getProductoById(@PathVariable(value = "id") Long id, Model model) {
-        Producto producto = productoRepository.findById(id).orElse(null);
+        Producto producto = productoRepository.getOne(id);
         model.addAttribute("producto", producto);
         return "producto-edit";
     }
@@ -46,8 +46,10 @@ public class ProductoController {
         return getAllProductos(model);
     }
 
-    @PostMapping("/update-producto")
-    public String updateProducto(@Valid @RequestBody Producto producto, Model model){
+    @PostMapping("/update-producto/{id}")
+    public String updateProducto(@PathVariable(value = "id") Long id, Producto producto, Model model){
+        producto.id = id;
+        producto.estado = true;
         productoRepository.save(producto);
         return getAllProductos(model);
     }

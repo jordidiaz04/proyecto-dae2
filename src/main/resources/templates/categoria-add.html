@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/icons.css">
+    <link rel="stylesheet" href="/assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="/assets/css/app-style.css">
+    <title>Categorias</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Agregar Categorias</h3>
+        </div>
+        <div class="col-lg-12 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="#" method="post" th:object="${categoria}" th:action="@{/save-categoria}">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <label for="txtNombre">Nombre</label>
+                                    <input type="text"
+                                           class="form-control form-control-rounded"
+                                           id="txtNombre"
+                                           placeholder="Ingrese un nombre"
+                                           maxlength="100"
+                                           th:field="*{nombre}">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="txtActivo">Activo</label>
+                                    <input type="checkbox"
+                                           class="form-control form-control-rounded"
+                                           id="txtActivo" th:field="*{estado}"
+                                           checked="checked">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="txtDescripcion">Descripcion</label>
+                                    <input type="text"
+                                           class="form-control form-control-rounded"
+                                           id="txtDescripcion" placeholder="Ingrese la descripcion"
+                                           maxlength="200"
+                                           th:field="*{descripcion}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary shadow-primary btn-round px-5"><i class="fa fa-save"></i> Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/sidebar-menu.js"></script>
+<script src="/assets/js/app-script.js"></script>
+</body>
+</html>
