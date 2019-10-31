@@ -15,7 +15,14 @@ public class UsuarioJdbc {
 
     public Usuario login(Usuario usuario){
         final String sql = "select * from usuario where dni = ? and password = ?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{usuario.dni, usuario.password}, UsuarioJdbc::UsuarioRowMapper);
+        Usuario obj = null;
+        try {
+            obj = jdbcTemplate.queryForObject(sql, new Object[]{usuario.dni, usuario.password}, UsuarioJdbc::UsuarioRowMapper);
+        }
+        catch (Exception ex){
+            obj = null;
+        }
+        return obj;
     }
 
     private static Usuario UsuarioRowMapper(ResultSet resultSet, int i) throws SQLException {

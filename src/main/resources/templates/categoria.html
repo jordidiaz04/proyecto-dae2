@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/icons.css">
+    <link rel="stylesheet" href="/assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="/assets/css/app-style.css">
+    <title>Categorias</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Listado de Categorias</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <a th:href="@{/add-categoria}" class="btn btn-primary">Agregar categoria</a>
+                </div>
+                <div class="card-body" th:switch="categorias">
+                    <div class="table-responsive" th:case="*">
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead class="thead-primary">
+                            <tr>
+                                <th scope="col">nombre</th>
+                                <th scope="col">descripcion</th>
+                                <th scope="col">estado</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="categoria : ${categorias}">
+                                <td th:text="${categoria.nombre}"></td>
+                                <td th:text="${categoria.descripcion}"></td>
+                                <td th:text="${categoria.estado}"></td>
+                                <td class="text-right">
+                                    <a th:href="@{/categoria/{id}(id=${categoria.id})}" class="btn btn-icon btn-primary waves-effect waves-light m-1"> <i class="fa fa-pencil"></i> </a>
+                                    <a th:href="@{/delete-categoria/{id}(id=${categoria.id})}" class="btn btn-icon btn-danger waves-effect waves-light m-1"> <i class="fa fa-trash"></i> </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/sidebar-menu.js"></script>
+<script src="/assets/js/app-script.js"></script>
+</body>
+</html>
