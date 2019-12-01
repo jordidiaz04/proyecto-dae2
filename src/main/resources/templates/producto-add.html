@@ -38,7 +38,7 @@
                                        id="txtCategoria"
                                        placeholder="Ingrese una categoria"
                                        maxlength="100"
-                                       th:field="*{categoria}">
+                                       th:field="*{idCategoria}">
                             </div>
                         </div>
                         <div class="row">
@@ -55,6 +55,20 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
+                                    <label for="txtMarca">Marca</label>
+                                    <input type="number"
+                                           step=".01"
+                                           class="form-control form-control-rounded"
+                                           id="txtMarca"
+                                           placeholder="Ingrese una marca"
+                                           maxlength="100"
+                                           th:field="*{idMarca}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
                                     <label for="txtPrecio">Precio</label>
                                     <input type="number"
                                            step=".01"
@@ -65,8 +79,6 @@
                                            th:field="*{precio}">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="txtStock">Stock</label>
@@ -77,13 +89,30 @@
                                            th:field="*{stock}">
                                 </div>
                             </div>
-                            <div class="col-6">
+                        </div>
+                        <div class="row">
+
+                            <div class="col-12">
                                 <div class="form-group">
-                                    <label for="txtActivo">Activo</label>
+                                    <label for="txtDescripcion">Descripcion</label>
+                                    <textarea
+                                            class="form-control form-control-rounded"
+                                            id="txtDescripcion"
+                                            placeholder="Ingrese un nombre"
+                                            maxlength="100"
+                                            th:field="*{descripcion}">
+                                        </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-check">
                                     <input type="checkbox"
-                                           class="form-control form-control-rounded"
+                                           class="form-check-input"
                                            id="txtActivo" th:field="*{estado}"
                                            checked="checked">
+                                    <label class="form-check-label" for="txtActivo">Activo</label>
                                 </div>
                             </div>
                         </div>

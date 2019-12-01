@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import pe.isil.proyectodae2.jdbc.UsuarioJdbc;
 import pe.isil.proyectodae2.model.Usuario;
-import pe.isil.proyectodae2.repository.UsuarioRepository;
 
 @Controller
 public class LoginController {

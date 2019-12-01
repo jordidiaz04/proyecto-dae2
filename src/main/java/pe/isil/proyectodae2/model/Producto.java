@@ -5,9 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Producto")
+@Table(name = "producto")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -23,11 +24,11 @@ public class Producto {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "categoria", nullable = false)
-    private String categoria;
-
     @Column(name = "precio", nullable = false)
-    private double precio;
+    private BigDecimal precio;
+
+    @Column(name = "descripcion", nullable = false)
+    private String descripcion;
 
     @Column(name = "stock", nullable = false)
     private Long stock;
@@ -35,4 +36,9 @@ public class Producto {
     @Column(name = "estado", nullable = false)
     public boolean estado;
 
+    @Column(name = "idCategoria", nullable = false)
+    private Long idCategoria;
+
+    @Column(name = "idMarca", nullable = false)
+    private Long idMarca;
 }

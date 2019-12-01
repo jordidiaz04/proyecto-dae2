@@ -6,13 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import pe.isil.proyectodae2.model.Cliente;
+import pe.isil.proyectodae2.repository.cliente.ClienteRepository;
 
-import pe.isil.proyectodae2.repository.ClienteRepository;
 
-
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -36,7 +33,7 @@ public class ClienteController {
 
     @GetMapping("/cliente/{id}")
     public String getClienteById(@PathVariable(value = "id") Long id, Model model) {
-        Cliente cliente = clienteRepository.findById(id).orElse(null);
+        Cliente cliente = clienteRepository.findById(id);
         model.addAttribute("cliente", cliente);
         return "cliente-edit";
     }
@@ -44,7 +41,7 @@ public class ClienteController {
     @PostMapping("/save-cliente")
     public String createCliente(Cliente cliente, Model model){
         cliente.estado = true;
-        clienteRepository.save(cliente);
+        clienteRepository.create(cliente);
         return getAllClientes(model);
     }
 
@@ -52,13 +49,13 @@ public class ClienteController {
     public String updateCliente(@PathVariable(value = "id") Long id, Cliente cliente, Model model){
         cliente.id = id;
         cliente.estado = true;
-        clienteRepository.save(cliente);
+        clienteRepository.update(cliente);
         return getAllClientes(model);
     }
 
     @GetMapping("/delete-cliente/{id}")
     public String deleteCliente(@PathVariable(value = "id") Long id, Model model){
-        clienteRepository.deleteById(id);
+        clienteRepository.delete(id);
         return getAllClientes(model);
     }
 }

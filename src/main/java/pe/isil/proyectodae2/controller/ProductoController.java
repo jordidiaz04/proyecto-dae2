@@ -6,18 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import pe.isil.proyectodae2.model.Producto;
-import pe.isil.proyectodae2.repository.ProductoRepository;
+import pe.isil.proyectodae2.repository.producto.ProductoRepository;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 public class ProductoController {
     @Autowired
     private ProductoRepository productoRepository;
-    private Producto producto;
 
     @GetMapping("/producto")
     public String getAllProductos(Model model){
@@ -34,7 +31,7 @@ public class ProductoController {
 
     @GetMapping("/producto/{id}")
     public String getProductoById(@PathVariable(value = "id") Long id, Model model) {
-        Producto producto = productoRepository.getOne(id);
+        Producto producto = productoRepository.findById(id);
         model.addAttribute("producto", producto);
         return "producto-edit";
     }
@@ -42,7 +39,7 @@ public class ProductoController {
     @PostMapping("/save-producto")
     public String createProducto(Producto producto, Model model){
         producto.estado = true;
-        productoRepository.save(producto);
+        productoRepository.create(producto);
         return getAllProductos(model);
     }
 
@@ -50,13 +47,13 @@ public class ProductoController {
     public String updateProducto(@PathVariable(value = "id") Long id, Producto producto, Model model){
         producto.id = id;
         producto.estado = true;
-        productoRepository.save(producto);
+        productoRepository.update(producto);
         return getAllProductos(model);
     }
 
     @GetMapping("/delete-producto/{id}")
     public String deleteProducto(@PathVariable(value = "id") Long id, Model model){
-        productoRepository.deleteById(id);
+        productoRepository.delete(id);
         return getAllProductos(model);
     }
 }
