@@ -40,11 +40,11 @@ public class JdbcProductoRepository implements ProductoRepository {
 
     @Override
     public void update(Producto producto) {
-        final String sql = "update categoria set " +
-                "codigo = ?, nombre = ?, precio = ?, descripcion = ?, stock = ?, estado = ?, idCategoria = ?, idMarca = ?" +
+        final String sql = "update producto set " +
+                "codigo = ?, nombre = ?, precio = ?, descripcion = ?, stock = ?, estado = ?, idCategoria = ?, idMarca = ? " +
                 "where id = ?";
         jdbcTemplate.update(sql, producto.getCodigo(), producto.getNombre(), producto.getPrecio(), producto.getDescripcion(),
-                producto.getStock(), producto.isEstado(),producto.getIdCategoria(), producto.getIdMarca());
+                producto.getStock(), producto.isEstado(),producto.getIdCategoria(), producto.getIdMarca(), producto.getId());
     }
 
     @Override

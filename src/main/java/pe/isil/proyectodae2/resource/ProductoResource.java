@@ -15,8 +15,6 @@ public class ProductoResource {
     @Autowired
     ProductoService productoService;
 
-
-    //GET
     @GetMapping("/productos")
     public ResponseEntity getAll(){
         List<Producto> productos = productoService.findAll();
@@ -26,7 +24,6 @@ public class ProductoResource {
         return new ResponseEntity(productos, HttpStatus.OK);
     }
 
-    //GET BY ID
     @GetMapping("/productos/{id}")
     public ResponseEntity getById(@PathVariable Long id){
 

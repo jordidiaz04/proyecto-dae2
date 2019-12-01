@@ -6,19 +6,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import pe.isil.proyectodae2.model.Categoria;
 import pe.isil.proyectodae2.model.Producto;
+import pe.isil.proyectodae2.model.ProductoCompleto;
 import pe.isil.proyectodae2.repository.producto.ProductoRepository;
+import pe.isil.proyectodae2.resource.CategoriaResource;
+import pe.isil.proyectodae2.resource.ProductoCompletoResource;
+import pe.isil.proyectodae2.resource.ProductoResource;
 
 import java.util.List;
 
 @Controller
 public class ProductoController {
     @Autowired
-    private ProductoRepository productoRepository;
+    private ProductoCompletoResource productoCompletoResource;
+
+    @Autowired
+    private ProductoResource productoResource;
+
+    @Autowired
+    private CategoriaResource categoriaResource;
 
     @GetMapping("/producto")
     public String getAllProductos(Model model){
-        List<Producto> productos = productoRepository.findAll();
+        List<ProductoCompleto> productos = (List<ProductoCompleto>) productoCompletoResource.getAll().getBody();
+
         model.addAttribute("productos", productos);
         return "producto";
     }
@@ -31,7 +43,7 @@ public class ProductoController {
 
     @GetMapping("/producto/{id}")
     public String getProductoById(@PathVariable(value = "id") Long id, Model model) {
-        Producto producto = productoRepository.findById(id);
+        Producto producto = (Producto) productoResource.getById(id).getBody();
         model.addAttribute("producto", producto);
         return "producto-edit";
     }
@@ -39,7 +51,7 @@ public class ProductoController {
     @PostMapping("/save-producto")
     public String createProducto(Producto producto, Model model){
         producto.estado = true;
-        productoRepository.create(producto);
+        productoResource.create(producto);
         return getAllProductos(model);
     }
 
@@ -47,13 +59,13 @@ public class ProductoController {
     public String updateProducto(@PathVariable(value = "id") Long id, Producto producto, Model model){
         producto.id = id;
         producto.estado = true;
-        productoRepository.update(producto);
+        productoResource.update(id, producto);
         return getAllProductos(model);
     }
 
     @GetMapping("/delete-producto/{id}")
     public String deleteProducto(@PathVariable(value = "id") Long id, Model model){
-        productoRepository.delete(id);
+        productoResource.delete(id);
         return getAllProductos(model);
     }
 }

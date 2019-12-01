@@ -28,15 +28,15 @@ public class JdbcCategoriaRepository implements CategoriaRepository{
 
     @Override
     public void create(Categoria categoria) {
-        final String sql = "insert into categoria (nombre, despripcion) values (?,?)";
-        jdbcTemplate.update(sql, categoria.getNombre(),categoria.getDescripcion());
+        final String sql = "insert into categoria (nombre, descripcion, estado) values (?,?,?)";
+        jdbcTemplate.update(sql, categoria.getNombre(),categoria.getDescripcion(), categoria.isEstado());
 
     }
 
     @Override
     public void update(Categoria categoria) {
-        final String sql = "update categoria set nombre = ?, descripcion = ? where id = ?";
-        jdbcTemplate.update(sql, categoria.getNombre(), categoria.getDescripcion(), categoria.getId());
+        final String sql = "update categoria set nombre = ?, descripcion = ?, estado = ? where id = ?";
+        jdbcTemplate.update(sql, categoria.getNombre(), categoria.getDescripcion(), categoria.isEstado(), categoria.getId());
     }
 
     @Override

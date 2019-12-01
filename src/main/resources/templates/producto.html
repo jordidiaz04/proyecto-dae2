@@ -34,6 +34,7 @@
                                 <th scope="col">stock</th>
                                 <th scope="col">categoria</th>
                                 <th scope="col">descripcion</th>
+                                <th scope="col">empresa</th>
                                 <th scope="col">estado</th>
                                 <th></th>
                             </tr>
@@ -41,12 +42,13 @@
                             <tbody>
                             <tr th:each="producto : ${productos}">
                                 <td th:text="${producto.codigo}"></td>
-                                <td th:text="${producto.idMarca}"></td>
+                                <td th:text="${producto.marcaNombre}"></td>
                                 <td th:text="${producto.nombre}"></td>
                                 <td th:text="${producto.precio.stripTrailingZeros()}"></td>
                                 <td th:text="${producto.stock}"></td>
-                                <td th:text="${producto.idCategoria}"></td>
+                                <td th:text="${producto.categoriaNombre}"></td>
                                 <td th:text="${producto.descripcion}"></td>
+                                <td th:text="${producto.empresaNombre}"></td>
                                 <td th:text="${producto.estado}"></td>
                                 <td class="text-right">
                                     <a th:href="@{/producto/{id}(id=${producto.id})}" class="btn btn-icon btn-primary waves-effect waves-light m-1"> <i class="fa fa-pencil"></i> </a>
