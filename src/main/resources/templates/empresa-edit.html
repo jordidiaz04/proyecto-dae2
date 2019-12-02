@@ -10,47 +10,36 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h3>Agregar Categorias</h3>
+                    <h3>Editar empresa</h3>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-12 mx-auto">
                     <div class="card">
                         <div class="card-body">
-                            <form action="#" method="post" th:object="${categoria}" th:action="@{/save-categoria}">
+                            <form action="#" method="post" th:object="${empresa}"
+                                  th:action="@{/update-empresa/{id} (id=${empresa.id})}">
                                 <div class="row">
-                                    <div class="col-9">
+                                    <div class="col-12">
                                         <div class="form-group">
                                             <label for="txtNombre">Nombre</label>
                                             <input type="text"
                                                    class="form-control form-control-rounded"
                                                    id="txtNombre"
                                                    placeholder="Ingrese un nombre"
-                                                   maxlength="100"
-                                                   required
+                                                   maxlength="100" required
                                                    th:field="*{nombre}">
                                         </div>
                                     </div>
-                                    <div class="col-3">
-                                        <div class="form-group">
-                                            <label for="txtActivo">Activo</label>
-                                            <input type="checkbox"
-                                                   class="form-control form-control-rounded"
-                                                   id="txtActivo" th:field="*{estado}"
-                                                   checked="checked">
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="txtDescripcion">Descripcion</label>
-                                            <textarea
-                                                    class="form-control form-control-rounded"
-                                                    id="txtDescripcion"
-                                                    placeholder="Ingrese una descripcion"
-                                                    maxlength="200"
-                                                    required
-                                                    th:field="*{descripcion}">
-                                        </textarea>
+                                        <div class="form-check">
+                                            <input type="checkbox"
+                                                   class="form-check-input"
+                                                   id="txtActivo" th:field="*{estado}" th:checked="*{estado}"
+                                            >
+                                            <label class="form-check-label" for="txtActivo">Activo</label>
                                         </div>
                                     </div>
                                 </div>

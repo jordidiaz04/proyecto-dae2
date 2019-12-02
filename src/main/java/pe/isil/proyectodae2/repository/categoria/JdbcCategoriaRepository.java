@@ -42,7 +42,12 @@ public class JdbcCategoriaRepository implements CategoriaRepository{
     @Override
     public void delete(Long id) {
         final String sql = "delete from categoria where id = ?";
-        jdbcTemplate.update(sql, id);
+        try {
+            jdbcTemplate.update(sql, id);
+
+        }catch (Exception e){
+            //TODO: ATRAPAR ERRORES
+        }
     }
 
     private static Categoria CategoriaRowMapper(ResultSet resultSet, int i) throws SQLException {

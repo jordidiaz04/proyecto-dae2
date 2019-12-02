@@ -49,7 +49,12 @@ public class JdbcMarcaRepository implements MarcaRepository {
     @Override
     public void delete(Long id) {
         final String sql = "delete from marca where id = ?";
-        jdbcTemplate.update(sql, id);
+        try {
+            jdbcTemplate.update(sql, id);
+
+        }catch (Exception e){
+            //TODO: ATRAPAR ERRORES
+        }
     }
 
     private static Marca MarcaRowMapper(ResultSet resultSet, int i) throws SQLException {

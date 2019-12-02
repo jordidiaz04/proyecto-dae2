@@ -15,6 +15,7 @@
             <div class="row">
                 <div class="col-lg-12 mx-auto">
                     <div class="card">
+                        <div th:insert="fragments/productos/botones2.html"></div>
                         <div class="card-body">
                             <form action="#" method="post" th:object="${producto}"
                                   th:action="@{/update-producto/{id} (id=${producto.id})}">
@@ -118,19 +119,19 @@
                                             <textarea
                                                     class="form-control form-control-rounded"
                                                     id="txtDescripcion"
-                                                    placeholder="Ingrese un nombre"
-                                                    maxlength="100"
+                                                    placeholder="Ingrese una descripcion"
+                                                    maxlength="200"
                                                     th:field="*{descripcion}">
                                         </textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-12">
                                         <div class="form-check">
                                             <input type="checkbox"
                                                    class="form-check-input"
-                                                   id="txtActivo" th:checked="*{estado}"
+                                                   id="txtActivo" th:field="*{estado}" th:checked="*{estado}"
                                             >
                                             <label class="form-check-label" for="txtActivo">Activo</label>
                                         </div>

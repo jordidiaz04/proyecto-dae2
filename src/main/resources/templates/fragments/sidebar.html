@@ -17,7 +17,13 @@
                 <li class="sidebar-header">NAVEGACION PRINCIPAL</li>
                 <li><a th:href="@{/usuario}"><i class="fa fa-circle-o"></i> Usuario</a></li>
                 <li><a th:href="@{/cliente}"><i class="fa fa-circle-o"></i> Cliente</a></li>
-                <li><a th:href="@{/producto}"><i class="fa fa-circle-o"></i> Producto</a></li>
+                <li><a th:href="@{/producto}"><i class="fa fa-circle-o"></i> Producto</a>
+                    <ul class="sidebar-menu do-nicescrol in">
+                        <li><a th:href="@{/categoria}"><i class="fa fa-circle-o"></i> Categoria</a>
+                        <li><a th:href="@{/marca}"><i class="fa fa-circle-o"></i> Marca</a>
+                        <li><a th:href="@{/empresa}"><i class="fa fa-circle-o"></i> Empresa</a>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

@@ -13,6 +13,7 @@
                 </div>
                 <div class="col-lg-12 mx-auto">
                     <div class="card">
+                        <div th:insert="fragments/productos/botones2.html"></div>
                         <div class="card-body">
                             <form action="#" method="post" th:object="${producto}" th:action="@{/save-producto}">
                                 <div class="row">
@@ -24,6 +25,7 @@
                                                    id="txtCodigo"
                                                    placeholder="Ingrese el codigo"
                                                    maxlength="12"
+                                                   required
                                                    th:field="*{codigo}">
                                         </div>
                                     </div>
@@ -71,6 +73,7 @@
                                                    id="txtNombre"
                                                    placeholder="Ingrese un nombre"
                                                    maxlength="100"
+                                                   required
                                                    th:field="*{nombre}">
                                         </div>
                                     </div>
@@ -85,6 +88,7 @@
                                                    id="txtPrecio"
                                                    placeholder="Ingrese un precio"
                                                    maxlength="100"
+                                                   required
                                                    th:field="*{precio}">
                                         </div>
                                     </div>
@@ -95,31 +99,32 @@
                                                    class="form-control form-control-rounded"
                                                    id="txtStock" placeholder="Ingrese el stock"
                                                    maxlength="20"
+                                                   required
                                                    th:field="*{stock}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="txtDescripcion">Descripcion</label>
                                             <textarea
                                                     class="form-control form-control-rounded"
                                                     id="txtDescripcion"
-                                                    placeholder="Ingrese un nombre"
-                                                    maxlength="100"
+                                                    placeholder="Ingrese una descripcion"
+                                                    maxlength="200"
+                                                    required
                                                     th:field="*{descripcion}">
                                         </textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-12">
                                         <div class="form-check">
                                             <input type="checkbox"
                                                    class="form-check-input"
-                                                   id="txtActivo" th:checked="*{estado}"
+                                                   id="txtActivo" th:field="*{estado}" th:checked="*{estado}"
                                             >
                                             <label class="form-check-label" for="txtActivo">Activo</label>
                                         </div>

@@ -22,10 +22,4 @@ public class Empresa {
 
     @Column(name = "estado", nullable = false)
     public boolean estado;
-
-    @Column(name = "descripcion", nullable = false)
-    private String descripcion;
-
-    @Column(name = "idEmpresa", nullable = false)
-    private Long idEmpresa;
 }

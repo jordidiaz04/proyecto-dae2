@@ -10,24 +10,18 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h3>Editar Categoria</h3>
+                    <h3>Editar Marca</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 mx-auto">
                     <div class="card">
+                        <div class="card-header">
+                            <a th:href="@{/add-empresa}" class="btn btn-info">Agregar Empresa</a>
+                        </div>
                         <div class="card-body">
-                            <form action="#" method="post" th:object="${categoria}"
-                                  th:action="@{/update-categoria/{id} (id=${categoria.id})}">
-                                <div class="row d-none">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="txtId">Id</label>
-                                            <input type="text" class="form-control form-control-rounded" id="txtId"
-                                                   disabled th:field="*{id}">
-                                        </div>
-                                    </div>
-                                </div>
+                            <form action="#" method="post" th:object="${marca}"
+                                  th:action="@{/update-marca/{id} (id=${marca.id})}">
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
@@ -36,21 +30,26 @@
                                                    class="form-control form-control-rounded"
                                                    id="txtNombre"
                                                    placeholder="Ingrese un nombre"
-                                                   maxlength="100"
-                                                   required
+                                                   maxlength="100" required
                                                    th:field="*{nombre}">
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label for="txtActivo">Activo</label>
-                                                <input type="checkbox"
-                                                       class="form-control form-control-rounded"
-                                                       id="txtActivo" th:field="*{estado}"
-                                                >
-                                            </div>
-                                        </div>
+                                    <div class="col-6"
+                                         th:switch="empresas"
+                                         th:case="*">
+                                        <label for="txtEmpresa">Empresa</label>
+                                        <select
+                                                class="form-control form-control-rounded"
+                                                id="txtEmpresa"
+                                                placeholder="Ingrese una empresa"
+                                                th:field="*{idEmpresa}"
+                                        >
+                                            <option th:each="empresa : ${empresas}"
+                                                    th:value="${empresa.id}"
+                                                    th:text="${empresa.nombre}"
+                                            >
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -61,10 +60,20 @@
                                                     class="form-control form-control-rounded"
                                                     id="txtDescripcion"
                                                     placeholder="Ingrese una descripcion"
-                                                    maxlength="200"
-                                                    required
+                                                    maxlength="200" required
                                                     th:field="*{descripcion}">
                                         </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input type="checkbox"
+                                                   class="form-check-input"
+                                                   id="txtActivo" th:field="*{estado}" th:checked="*{estado}"
+                                            >
+                                            <label class="form-check-label" for="txtActivo">Activo</label>
                                         </div>
                                     </div>
                                 </div>
