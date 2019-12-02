@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "categoria")
+@Table(name = "empresa")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Categoria {
+public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -20,10 +20,12 @@ public class Categoria {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "descripcion", nullable = false)
-    private String descripcion;
-
     @Column(name = "estado", nullable = false)
     public boolean estado;
 
+    @Column(name = "descripcion", nullable = false)
+    private String descripcion;
+
+    @Column(name = "idEmpresa", nullable = false)
+    private Long idEmpresa;
 }

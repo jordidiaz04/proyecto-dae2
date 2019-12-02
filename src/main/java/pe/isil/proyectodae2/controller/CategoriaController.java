@@ -7,19 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pe.isil.proyectodae2.model.Categoria;
-import pe.isil.proyectodae2.repository.CategoriaRepository;
+import pe.isil.proyectodae2.repository.categoria.CategoriaRepository;
+import pe.isil.proyectodae2.resource.CategoriaResource;
 
 import java.util.List;
 
 @Controller
 public class CategoriaController {
     @Autowired
-    private CategoriaRepository categoriaRepository;
-    private Categoria categoria;
+    private CategoriaResource categoriaResource;
+
 
     @GetMapping("/categoria")
     public String getAllCategorias(Model model){
-        List<Categoria> categorias = categoriaRepository.findAll();
+        List<Categoria> categorias = (List<Categoria>) categoriaResource.getAll().getBody();
         model.addAttribute("categorias", categorias);
         return "categoria";
     }
@@ -32,7 +33,7 @@ public class CategoriaController {
 
     @GetMapping("/categoria/{id}")
     public String getCategoriaById(@PathVariable(value = "id") Long id, Model model) {
-        Categoria categoria = categoriaRepository.getOne(id);
+        Categoria categoria = (Categoria) categoriaResource.getById(id).getBody();
         model.addAttribute("categoria", categoria);
         return "categoria-edit";
     }
@@ -40,7 +41,7 @@ public class CategoriaController {
     @PostMapping("/save-categoria")
     public String createCategoria(Categoria categoria, Model model){
         categoria.estado = true;
-        categoriaRepository.save(categoria);
+        categoriaResource.create(categoria);
         return getAllCategorias(model);
     }
 
@@ -48,13 +49,13 @@ public class CategoriaController {
     public String updateCategoria(@PathVariable(value = "id") Long id, Categoria categoria, Model model){
         categoria.id = id;
         categoria.estado = true;
-        categoriaRepository.save(categoria);
+        categoriaResource.update(id, categoria);
         return getAllCategorias(model);
     }
 
     @GetMapping("/delete-categoria/{id}")
     public String deleteCategoria(@PathVariable(value = "id") Long id, Model model){
-        categoriaRepository.deleteById(id);
+        categoriaResource.delete(id);
         return getAllCategorias(model);
     }
 }
