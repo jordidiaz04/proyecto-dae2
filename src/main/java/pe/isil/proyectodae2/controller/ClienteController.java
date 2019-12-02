@@ -7,55 +7,72 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pe.isil.proyectodae2.model.Cliente;
-import pe.isil.proyectodae2.repository.cliente.ClienteRepository;
-
+import pe.isil.proyectodae2.service.ClienteService;
 
 import java.util.List;
 
 @Controller
 public class ClienteController {
-    @Autowired
-    private ClienteRepository clienteRepository;
-    private Cliente cliente;
 
-    @GetMapping("/cliente")
-    public String getAllClientes(Model model){
-        List<Cliente> clientes = clienteRepository.findAll();
+    @Autowired
+    ClienteService clienteService;
+
+    @GetMapping("/clientes")
+    public String getCliente(Model model){
+        model.addAttribute("clientes", clienteService.findAll());
+        return "cliente";
+    }
+
+    @PostMapping("clientes/save")
+    public String saveCliente(Cliente cliente, Model model){
+        clienteService.create(cliente);
+
+        List<Cliente> clientes = clienteService.findAll();
         model.addAttribute("clientes", clientes);
         return "cliente";
     }
 
-    @GetMapping("/add-cliente")
-    public String addCliente(Model model){
-        model.addAttribute(new Cliente());
+    @GetMapping("/clientes/add")
+    public String addStudent(Model model) {
+        model.addAttribute("cliente", new Cliente());
         return "cliente-add";
     }
 
-    @GetMapping("/cliente/{id}")
-    public String getClienteById(@PathVariable(value = "id") Long id, Model model) {
-        Cliente cliente = clienteRepository.findById(id);
-        model.addAttribute("cliente", cliente);
+    @GetMapping("/clientes/edit/{id}")
+    public String getClienteUpdate(@PathVariable Long id,
+                                      Model model) {
+
+        Cliente currentCliente = clienteService.findById(id);
+        model.addAttribute("cliente", currentCliente);
         return "cliente-edit";
     }
 
-    @PostMapping("/save-cliente")
-    public String createCliente(Cliente cliente, Model model){
-        cliente.estado = true;
-        clienteRepository.create(cliente);
-        return getAllClientes(model);
+    @PostMapping("/clientes/update/{id}")
+    public String updateCliente(@PathVariable Long id,
+                                Cliente cliente,
+                                Model model) {
+
+        //Update
+        clienteService.update(cliente);
+
+        //list
+        List<Cliente> clientes = clienteService.findAll();
+        model.addAttribute("clientes", clientes);
+        return "cliente";
     }
 
-    @PostMapping("/update-cliente/{id}")
-    public String updateCliente(@PathVariable(value = "id") Long id, Cliente cliente, Model model){
-        cliente.id = id;
-        cliente.estado = true;
-        clienteRepository.update(cliente);
-        return getAllClientes(model);
-    }
+    @GetMapping("/clientes/delete/{id}")
+    public String deleteCliente(@PathVariable Long id,
+                                Model model) {
 
-    @GetMapping("/delete-cliente/{id}")
-    public String deleteCliente(@PathVariable(value = "id") Long id, Model model){
-        clienteRepository.delete(id);
-        return getAllClientes(model);
+        Cliente currentetCliente = clienteService.findById(id);
+
+        //Delete
+        clienteService.delete(id);
+
+        //list
+        List<Cliente> clientes = clienteService.findAll();
+        model.addAttribute("clientes", clientes);
+        return "cliente";
     }
 }
