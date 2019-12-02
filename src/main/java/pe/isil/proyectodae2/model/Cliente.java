@@ -4,14 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Entity
-@Table(name = "Cliente")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class Cliente {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -36,15 +38,9 @@ public class Cliente {
     public String password;
 
     @Column(name = "estado", nullable = false)
-    public Boolean estado;
+    public String estado;
 
     @Column(name = "direccion", nullable = false)
     public String direccion;
-
-    @Column(name = "cuenta", nullable = true)
-    public Boolean cuenta = true;
-
-    @Column(name = "carrito", nullable = true)
-    public Boolean carrito = true;
 
 }
