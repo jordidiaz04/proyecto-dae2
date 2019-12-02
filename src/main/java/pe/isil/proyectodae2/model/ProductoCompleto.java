@@ -7,50 +7,138 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "producto")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 public class ProductoCompleto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    public Long id;
-
-    @Column(name = "codigo", nullable = false)
+    private Long id;
     private String codigo;
-
-    @Column(name = "nombre", nullable = false)
     private String nombre;
-
-    @Column(name = "precio", nullable = false)
     private BigDecimal precio;
-
-    @Column(name = "descripcion", nullable = false)
     private String descripcion;
-
-    @Column(name = "stock", nullable = false)
     private Long stock;
-
-    @Column(name = "estado", nullable = false)
-    public boolean estado;
-
-    @Column(name = "categoriaId", nullable = false)
+    private boolean estado;
     private Long categoriaId;
-
-    @Column(name = "categoriaNombre", nullable = false)
     private String categoriaNombre;
-
-    @Column(name = "marcaId", nullable = false)
     private Long marcaId;
-
-    @Column(name = "marcaNombre", nullable = false)
     private String marcaNombre;
-
-    @Column(name = "empresaId", nullable = false)
     private Long empresaId;
-
-    @Column(name = "empresaNombre", nullable = false)
     private String empresaNombre;
+
+    public ProductoCompleto(Long id, String codigo, String nombre, BigDecimal precio, String descripcion, Long stock, boolean estado, Long categoriaId, String categoriaNombre, Long marcaId, String marcaNombre, Long empresaId, String empresaNombre) {
+        this.id = id;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.stock = stock;
+        this.estado = estado;
+        this.categoriaId = categoriaId;
+        this.categoriaNombre = categoriaNombre;
+        this.marcaId = marcaId;
+        this.marcaNombre = marcaNombre;
+        this.empresaId = empresaId;
+        this.empresaNombre = empresaNombre;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Long getStock() {
+        return stock;
+    }
+
+    public void setStock(Long stock) {
+        this.stock = stock;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public Long getCategoriaId() {
+        return categoriaId;
+    }
+
+    public void setCategoriaId(Long categoriaId) {
+        this.categoriaId = categoriaId;
+    }
+
+    public String getCategoriaNombre() {
+        return categoriaNombre;
+    }
+
+    public void setCategoriaNombre(String categoriaNombre) {
+        this.categoriaNombre = categoriaNombre;
+    }
+
+    public Long getMarcaId() {
+        return marcaId;
+    }
+
+    public void setMarcaId(Long marcaId) {
+        this.marcaId = marcaId;
+    }
+
+    public String getMarcaNombre() {
+        return marcaNombre;
+    }
+
+    public void setMarcaNombre(String marcaNombre) {
+        this.marcaNombre = marcaNombre;
+    }
+
+    public Long getEmpresaId() {
+        return empresaId;
+    }
+
+    public void setEmpresaId(Long empresaId) {
+        this.empresaId = empresaId;
+    }
+
+    public String getEmpresaNombre() {
+        return empresaNombre;
+    }
+
+    public void setEmpresaNombre(String empresaNombre) {
+        this.empresaNombre = empresaNombre;
+    }
 }
