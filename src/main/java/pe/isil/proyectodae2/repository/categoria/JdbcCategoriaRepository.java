@@ -50,6 +50,11 @@ public class JdbcCategoriaRepository implements CategoriaRepository{
         }
     }
 
+    @Override
+    public void add(Categoria categoria) {
+
+    }
+
     private static Categoria CategoriaRowMapper(ResultSet resultSet, int i) throws SQLException {
         Long rsId = resultSet.getLong("id");
         String rsNombre = resultSet.getString("nombre");

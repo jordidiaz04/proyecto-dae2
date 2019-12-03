@@ -29,14 +29,14 @@ public class JdbcUsuarioRepository implements UsuarioRepository {
 
     @Override
     public void create(Usuario usuario) {
-        final String sql = "insert into usuario (dni, password, nombres, apellidos, email, telefono) values (?,?,?,?,?,?)";
+        final String sql = "insert into usuario (dni, password, nombres, apellidos, email, telefono, estado) values (?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql, usuario.getDni(), usuario.getPassword(),usuario.getNombres(), usuario.getApellidos(),
-                usuario.getEmail(), usuario.getTelefono());
+                usuario.getEmail(), usuario.getTelefono(), usuario.getEstado());
     }
 
     @Override
     public void update(Usuario usuario) {
-        final String sql = "update usuario set dni = ?, password = ?, nombre = ?, apellidos = ?, " +
+        final String sql = "update usuario set dni = ?, password = ?, nombres = ?, apellidos = ?, " +
                 "email = ?, telefono = ? where id = ?";
         jdbcTemplate.update(sql, usuario.getDni(), usuario.getPassword(),usuario.getNombres(), usuario.getApellidos(),
                 usuario.getEmail(), usuario.getTelefono(), usuario.getId());
@@ -46,6 +46,11 @@ public class JdbcUsuarioRepository implements UsuarioRepository {
     public void delete(Long id) {
             final String sql = "delete from usuario where id = ?";
             jdbcTemplate.update(sql, id);
+
+    }
+
+    @Override
+    public void add(Usuario usuario) {
 
     }
 

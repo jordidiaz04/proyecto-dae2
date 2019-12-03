@@ -32,9 +32,9 @@ public class JdbcProductoCompletoRepository {
                         "e.id [empresaId],\n" +
                         "e.nombre [empresaNombre]\n" +
                         "from producto p\n" +
-                        "inner join categoria c on c.id = p.idCategoria\n" +
-                        "inner join marca m on m.id = p.idMarca\n" +
-                        "inner join empresa e on e.id = m.idEmpresa";
+                        "inner join categoria c on c.id = p.id_categoria\n" +
+                        "inner join marca m on m.id = p.id_marca\n" +
+                        "inner join empresa e on e.id = m.id_empresa";
         return jdbcTemplate.query(sql, JdbcProductoCompletoRepository::ProductoCompletoRowMapper);
     }
 
@@ -55,9 +55,9 @@ public class JdbcProductoCompletoRepository {
                         "e.id [empresaId],\n" +
                         "e.nombre [empresaNombre]\n" +
                         "from producto p\n" +
-                        "inner join categoria c on c.id = p.idCategoria\n" +
-                        "inner join marca m on m.id = p.idMarca\n" +
-                        "inner join empresa e on e.id = m.idEmpresa\n" +
+                        "inner join categoria c on c.id = p.id_categoria\n" +
+                        "inner join marca m on m.id = p.id_marca\n" +
+                        "inner join empresa e on e.id = m.id_marca\n" +
                         "where p.id = ?";
         return jdbcTemplate.queryForObject(sql, new Object[]{id}, JdbcProductoCompletoRepository::ProductoCompletoRowMapper);
     }

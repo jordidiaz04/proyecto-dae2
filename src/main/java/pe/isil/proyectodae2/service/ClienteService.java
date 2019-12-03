@@ -3,7 +3,7 @@ package pe.isil.proyectodae2.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.isil.proyectodae2.model.Cliente;
-import pe.isil.proyectodae2.repository.JdbcClienteRepository;
+import pe.isil.proyectodae2.repository.cliente.JdbcClienteRepository;
 
 import java.util.List;
 

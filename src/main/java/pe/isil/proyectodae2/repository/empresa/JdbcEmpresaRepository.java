@@ -55,6 +55,11 @@ public class JdbcEmpresaRepository implements EmpresaRepository {
         }
     }
 
+    @Override
+    public void add(Empresa empresa) {
+
+    }
+
     private static Empresa EmpresaRowMapper(ResultSet resultSet, int i) throws SQLException {
         Long rsId = resultSet.getLong("id");
         String rsNombre = resultSet.getString("nombre");

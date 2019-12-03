@@ -32,7 +32,7 @@ public class JdbcProductoRepository implements ProductoRepository {
     public void create(Producto producto) {
         final String sql =
                 "insert into producto " +
-                        "(codigo, nombre, precio, descripcion, stock, estado, idCategoria, idMarca) " +
+                        "(codigo, nombre, precio, descripcion, stock, estado, id_categoria, id_marca) " +
                         "values (?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql, producto.getCodigo(), producto.getNombre(), producto.getPrecio(), producto.getDescripcion(),
                 producto.getStock(), producto.isEstado(),producto.getIdCategoria(), producto.getIdMarca());
@@ -41,7 +41,7 @@ public class JdbcProductoRepository implements ProductoRepository {
     @Override
     public void update(Producto producto) {
         final String sql = "update producto set " +
-                "codigo = ?, nombre = ?, precio = ?, descripcion = ?, stock = ?, estado = ?, idCategoria = ?, idMarca = ? " +
+                "codigo = ?, nombre = ?, precio = ?, descripcion = ?, stock = ?, estado = ?, id_categoria = ?, id_marca = ? " +
                 "where id = ?";
         jdbcTemplate.update(sql, producto.getCodigo(), producto.getNombre(), producto.getPrecio(), producto.getDescripcion(),
                 producto.getStock(), producto.isEstado(),producto.getIdCategoria(), producto.getIdMarca(), producto.getId());
@@ -53,6 +53,11 @@ public class JdbcProductoRepository implements ProductoRepository {
         jdbcTemplate.update(sql, id);
     }
 
+    @Override
+    public void add(Producto producto) {
+
+    }
+
     private static Producto ProductoRowMapper(ResultSet resultSet, int i) throws SQLException {
         Long rsId = resultSet.getLong("id");
         String rsCodigo = resultSet.getString("codigo");
@@ -61,8 +66,8 @@ public class JdbcProductoRepository implements ProductoRepository {
         String rsDescripcion = resultSet.getString("descripcion");
         Long rsStock = resultSet.getLong("stock");
         Boolean rsEstado = resultSet.getBoolean("estado");
-        Long rsIdCategoria = resultSet.getLong("idCategoria");
-        Long rsidMarca = resultSet.getLong("idMarca");
+        Long rsIdCategoria = resultSet.getLong("id_categoria");
+        Long rsidMarca = resultSet.getLong("id_marca");
 
         return new Producto(rsId, rsCodigo, rsNombre, rsPrecio, rsDescripcion, rsStock, rsEstado, rsIdCategoria, rsidMarca);
     }

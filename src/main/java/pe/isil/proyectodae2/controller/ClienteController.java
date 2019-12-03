@@ -17,7 +17,7 @@ public class ClienteController {
     @Autowired
     ClienteService clienteService;
 
-    @GetMapping("/clientes")
+    @GetMapping("/cliente")
     public String getCliente(Model model){
         model.addAttribute("clientes", clienteService.findAll());
         return "cliente";

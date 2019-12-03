@@ -32,7 +32,7 @@ public class JdbcMarcaRepository implements MarcaRepository {
     public void create(Marca marca) {
         final String sql =
                 "insert into marca " +
-                        "(nombre, estado, descripcion, idEmpresa) " +
+                        "(nombre, estado, descripcion, id_empresa) " +
                         "values (?,?,?,?)";
         jdbcTemplate.update(sql, marca.getNombre(), marca.isEstado(), marca.getDescripcion(), marca.getIdEmpresa());
     }
@@ -40,7 +40,7 @@ public class JdbcMarcaRepository implements MarcaRepository {
     @Override
     public void update(Marca marca) {
         final String sql = "update marca set " +
-                "nombre = ?, estado = ?, descripcion = ?, idEmpresa = ? " +
+                "nombre = ?, estado = ?, descripcion = ?, id_empresa = ? " +
                 "where id = ?";
         jdbcTemplate.update(sql, marca.getNombre(), marca.isEstado(), marca.getDescripcion(),
                 marca.getIdEmpresa(), marca.getId());
@@ -57,13 +57,18 @@ public class JdbcMarcaRepository implements MarcaRepository {
         }
     }
 
+    @Override
+    public void add(Marca marca) {
+
+    }
+
     private static Marca MarcaRowMapper(ResultSet resultSet, int i) throws SQLException {
         Long rsId = resultSet.getLong("id");
         String rsNombre = resultSet.getString("nombre");
         Boolean rsEstado = resultSet.getBoolean("estado");
         String rsDescripcion = resultSet.getString("descripcion");
-        Long rsIdEmpresa = resultSet.getLong("idEmpresa");
+        Long rsid_empresa = resultSet.getLong("id_empresa");
 
-        return new Marca(rsId, rsNombre, rsEstado, rsDescripcion, rsIdEmpresa);
+        return new Marca(rsId, rsNombre, rsEstado, rsDescripcion, rsid_empresa);
     }
 }
