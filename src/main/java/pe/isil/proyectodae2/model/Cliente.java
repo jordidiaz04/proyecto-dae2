@@ -37,7 +37,7 @@ public class Cliente {
     public String password;
 
     @Column(name = "estado", nullable = false)
-    public String estado;
+    public Boolean estado;
 
     @Column(name = "direccion", nullable = false)
     public String direccion;

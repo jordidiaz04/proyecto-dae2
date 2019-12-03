@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h3>Listado de Empresa</h3>
+                    <h3>Listado de Clientes</h3>
                 </div>
             </div>
             <div class="row">
@@ -35,7 +35,7 @@
                                     <tbody>
                                     <tr th:each="cliente : ${clientes}">
                                         <td th:text="${cliente.dni}"></td>
-                                        <td th:text="${cliente.nombres} ${cliente.apellidos}"></td>
+                                        <td th:text="${cliente.nombres} + ' ' + ${cliente.apellidos}"></td>
                                         <td th:text="${cliente.email}"></td>
                                         <td th:text="${cliente.telefono}"></td>
                                         <td th:text="${cliente.direccion}"></td>

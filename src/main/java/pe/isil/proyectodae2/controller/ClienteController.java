@@ -25,6 +25,7 @@ public class ClienteController {
 
     @PostMapping("clientes/save")
     public String saveCliente(Cliente cliente, Model model){
+        cliente.estado = true;
         clienteService.create(cliente);
 
         List<Cliente> clientes = clienteService.findAll();
@@ -53,6 +54,7 @@ public class ClienteController {
                                 Model model) {
 
         //Update
+        cliente.estado = true;
         clienteService.update(cliente);
 
         //list
