@@ -57,7 +57,6 @@ public class ClienteResource {
         currentCliente.setApellidos(cliente.getApellidos());
         currentCliente.setEmail(cliente.getEmail());
         currentCliente.setTelefono(cliente.getTelefono());
-        currentCliente.setPassword(cliente.getPassword());
         currentCliente.setEstado(cliente.getEstado());
         currentCliente.setDireccion(cliente.getDireccion());
 

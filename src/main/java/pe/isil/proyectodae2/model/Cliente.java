@@ -33,9 +33,6 @@ public class Cliente {
     @Column(name = "telefono", nullable = false)
     public String telefono;
 
-    @Column(name = "password", nullable = false)
-    public String password;
-
     @Column(name = "estado", nullable = false)
     public Boolean estado;
 

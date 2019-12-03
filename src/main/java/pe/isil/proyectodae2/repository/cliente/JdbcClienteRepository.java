@@ -19,15 +19,15 @@ public class JdbcClienteRepository implements ClienteRepository {
 
     @Override
     public void create(Cliente cliente) {
-        final  String sql = "insert into cliente(dni, nombres, apellidos, email, telefono, password, estado, direccion ) values (?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, cliente.getDni(), cliente.getNombres(), cliente.getApellidos(), cliente.getEmail(), cliente.getTelefono(), cliente.getPassword(), cliente.getEstado(), cliente.getDireccion());
+        final  String sql = "insert into cliente(dni, nombres, apellidos, email, telefono, estado, direccion ) values (?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, cliente.getDni(), cliente.getNombres(), cliente.getApellidos(), cliente.getEmail(), cliente.getTelefono(), cliente.getEstado(), cliente.getDireccion());
 
     }
 
     @Override
     public void update(Cliente cliente) {
-        final String sql = "update cliente set dni = ?, nombres = ?, apellidos = ?, email = ?, telefono = ?, password = ?, direccion = ? where id = ?";
-        jdbcTemplate.update(sql, cliente.getDni(), cliente.getNombres(), cliente.getApellidos(), cliente.getEmail(), cliente.getTelefono(), cliente.getPassword(), cliente.getDireccion(), cliente.getId());
+        final String sql = "update cliente set dni = ?, nombres = ?, apellidos = ?, email = ?, telefono = ?, direccion = ? where id = ?";
+        jdbcTemplate.update(sql, cliente.getDni(), cliente.getNombres(), cliente.getApellidos(), cliente.getEmail(), cliente.getTelefono(), cliente.getDireccion(), cliente.getId());
     }
 
     @Override
@@ -58,11 +58,10 @@ public class JdbcClienteRepository implements ClienteRepository {
                     String apellidos = resultSet.getString("apellidos");
                     String email = resultSet.getString("email");
                     String telefono = resultSet.getString("telefono");
-                    String password = resultSet.getString("password");
                     boolean estado = resultSet.getBoolean("estado");
                     String direccion = resultSet.getString("direccion");
 
-                    return new Cliente(id, dni, nombres, apellidos, email, telefono, password, estado, direccion);
+                    return new Cliente(id, dni, nombres, apellidos, email, telefono, estado, direccion);
 
     }
 
